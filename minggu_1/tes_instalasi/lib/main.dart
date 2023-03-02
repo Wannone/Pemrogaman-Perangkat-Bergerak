@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Praktikum 1'),
     );
   }
 }
@@ -48,7 +48,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int _counter = 1;
+  String _text = "Ganjil";
 
   void _incrementCounter() {
     setState(() {
@@ -58,6 +59,15 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+      if(_counter>10){
+        _counter = 1;
+      }
+
+      if(_counter%2 == 0){
+        _text = "Genap";
+      }else{
+        _text = "Ganjil";
+      }
     });
   }
 
@@ -102,6 +112,10 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            Text(
+              _text,
+              style: Theme.of(context).textTheme.headlineMedium,
+            )
           ],
         ),
       ),
