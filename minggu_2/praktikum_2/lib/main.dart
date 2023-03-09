@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:praktikum_2/ganjilgenap.dart';
+import 'package:praktikum_2/bilganjil.dart';
+import 'package:praktikum_2/bilgenap.dart';
+import 'package:praktikum_2/bilgenapkelipatan.dart';
+import 'package:praktikum_2/bilprima.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Praktikum 2',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -24,7 +29,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Praktikum 2'),
+      home: const MyHomePage(title: 'Praktikum 2'),
     );
   }
 }
@@ -48,11 +53,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 1;
-  String textGanjilGenap = "";
-  String _text = "Ganjil";
-  String _text2 = "Genap";
-  String _text3 = "Prima";
+  int _counter = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -62,42 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
-      if(_counter>10){
-        _counter = 1;
-      }
-      if(_counter % 2 == 0){
-        textGanjilGenap = "Genap";
-      }else{
-        textGanjilGenap = "Ganjil";
-      }
-
-      _text = "Ganjil: ";
-      for(int i=0; i<=_counter; i++){
-        if(i%2 != 0){
-          _text += '${i}, ';
-        }
-      }
-
-      _text2 = "Genap: ";
-      for(int i=1; i<=_counter; i++){
-        if(i%2 == 0 && i%3==0){
-          _text2 += '${i}, ';
-        }
-      }
-
-      _text3 = "Prima: ";
-      int bil;
-      for(int i=1; i<=_counter; i++){
-          bil = 0;
-        for(int j=1; j<=i; j++) {
-          if(i%j == 0){
-            bil += 1;
-          }
-        }
-        if(bil == 2){
-          _text3 += '${i}, ';
-        }
-      }
     });
   }
 
@@ -135,37 +100,81 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            ElevatedButton(
+              onPressed: () {
+                //pindah tab
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Ganjilgenap(),
+                  ),
+                );
+              },
+              child: Text("Ganjil Genap"),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            SizedBox(
+              height: 10,
             ),
-            Text(
-              textGanjilGenap,
-              style: Theme.of(context).textTheme.headlineMedium,
+            ElevatedButton(
+              onPressed: () {
+                //pindah tab
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BilGanjil(),
+                  ),
+                );
+              },
+              child: Text("Ganjil"),
             ),
-            Text(
-              _text,
-              style: Theme.of(context).textTheme.headlineMedium,
+            SizedBox(
+              height: 10,
             ),
-            Text(
-              _text2,
-              style: Theme.of(context).textTheme.headlineMedium,
+            ElevatedButton(
+              onPressed: () {
+                //pindah tab
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BilGenap(),
+                  ),
+                );
+              },
+              child: Text("Genap"),
             ),
-            Text(
-              _text3,
-              style: Theme.of(context).textTheme.headlineMedium,
-            )
+            SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                //pindah tab
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BilGenapKelipatan(),
+                  ),
+                );
+              },
+              child: Text("Genap Kelipatan 3"),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                //pindah tab
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BilPrima(),
+                  ),
+                );
+              },
+              child: Text("Prima"),
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
