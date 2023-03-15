@@ -1,5 +1,4 @@
-# percobaan_1
-
+# Praktikum bab 3 part 1 dan 2
 A new Flutter project.
 
 ## Getting Started
